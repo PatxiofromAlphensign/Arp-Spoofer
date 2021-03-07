@@ -1,0 +1,14 @@
+langguage: python
+python:
+        - "3.8"
+global:
+        test="pytest"
+        test="python3 -m unittest"
+
+install:
+        - sudo apt show $main
+        - if [ $? -eq 0 ];then install $main 
+       
+script:
+        - $main
+
