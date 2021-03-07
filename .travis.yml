@@ -2,11 +2,11 @@ langguage: python
 python:
         - "3.8"
 env:
-        test="pytest"
-        test="python3 -m unittest"
+        - test="pytest"
+        - test="python3 -m unittest"
 install:
-        - sudo apt show $main
-        - if [ $? -eq 0 ];then install $main 
+        - sudo apt show $test
+        - if [ $? -eq 0 ];then install $test 
 script:
-        - $main
+        - $test
 
