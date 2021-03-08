@@ -4,15 +4,14 @@ python:
 env:
         - test="python3-pytest"
         - test="python3 -m unittest"
-env:
-        global:
-                - version="3.8"
+global:
+        - obj="python3 --version"
 install:
         - | 
           if [ $(wc -w <<< $test) -gt 1 ];then 
           sudo apt install $(echo $test | awk 'NF>1{print $NF}'); 
           else 
-          sudo apt insatll $test;fi
+          sudo apt install $test;fi
 script:
         - $test
 
