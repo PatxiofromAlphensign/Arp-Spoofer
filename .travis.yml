@@ -5,7 +5,13 @@ env:
         - test="pytest"
         - test="python3 -m unittest"
 install:
-        - sudo apt show $test
+        - | 
+          if [ $(wc -w <<< $test) -gt 1 ];then 
+          sudo apt install $(echo $test | awk 'NF>1{print $NF}'); 
+          else 
+          sudo apt show $test;fi
+          fi
+
         - if [ $? -eq 0 ];then install $test 
 script:
         - $test
