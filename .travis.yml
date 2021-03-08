@@ -2,17 +2,17 @@ langguage: python
 python:
         - "3.8"
 env:
-        - test="pytest"
+        - test="python3-pytest"
         - test="python3 -m unittest"
+env:
+        global:
+                - version="3.8"
 install:
         - | 
           if [ $(wc -w <<< $test) -gt 1 ];then 
           sudo apt install $(echo $test | awk 'NF>1{print $NF}'); 
           else 
-          sudo apt show $test;fi
-          fi
-
-        - if [ $? -eq 0 ];then install $test 
+          sudo apt insatll $test;fi
 script:
         - $test
 
