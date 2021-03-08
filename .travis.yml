@@ -5,13 +5,17 @@ env:
         - test="python3-pytest"
         - test="python3 -m unittest"
 global:
-        - obj="python3 --version"
+        - obj="python --version"
+        - newer="python3 --version"
+before_install:
+        - sudo apt upgrade && sudo apt update
 install:
         - | 
           if [ $(wc -w <<< $test) -gt 1 ];then 
           sudo apt install $(echo $test | awk 'NF>1{print $NF}'); 
           else 
           sudo apt install $test;fi
+          1
 script:
         - $test
 
